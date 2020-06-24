@@ -18,6 +18,7 @@ package com.baidu.bjf.remoting.protobuf.code;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -324,6 +325,12 @@ public abstract class AbstractCodeGenerator implements ICodeGenerator {
         String javaType = type.getJavaType();
         if (Integer.class.getSimpleName().equals(javaType)) {
             if (cls.getSimpleName().equals("int") || Integer.class.getSimpleName().equals(cls.getSimpleName())) {
+                return;
+            }
+            throw new IllegalArgumentException(getMismatchTypeErroMessage(type, field));
+        }
+        if (type == FieldType.BIGDECIMAL) {
+            if (BigDecimal.class.getSimpleName().equals(cls.getSimpleName())) {
                 return;
             }
             throw new IllegalArgumentException(getMismatchTypeErroMessage(type, field));

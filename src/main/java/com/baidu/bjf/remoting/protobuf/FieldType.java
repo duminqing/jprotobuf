@@ -17,6 +17,8 @@ package com.baidu.bjf.remoting.protobuf;
 
 import com.google.protobuf.WireFormat;
 
+import java.math.BigDecimal;
+
 
 /**
  * Field type for Protobuf.
@@ -48,8 +50,8 @@ public enum FieldType {
     ENUM ("Enum", "enum"       , "WIRETYPE_VARINT"    ,    ".ordinal()"    ,  WireFormat.FieldType.ENUM , null ),
     MAP ("Map", "map"       , "WIRETYPE_VARINT"    ,    ""    ,  WireFormat.FieldType.MESSAGE , null ),
     DATE ("Date", "int64"       , "WIRETYPE_VARINT"    ,    ".getTime()"    ,  WireFormat.FieldType.INT64 , null ),
-    DEFAULT("", ""       , ""    ,    ""    ,  WireFormat.FieldType.MESSAGE , null );
-    
+    DEFAULT("", ""       , ""    ,    ""    ,  WireFormat.FieldType.MESSAGE , null ),
+    BIGDECIMAL("java.math.BigDecimal", "string", "WIRETYPE_LENGTH_DELIMITED", ".toString()", WireFormat.FieldType.STRING, null);
     /**
      * java original type
      */
