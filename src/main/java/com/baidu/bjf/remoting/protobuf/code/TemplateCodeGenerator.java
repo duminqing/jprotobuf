@@ -533,6 +533,9 @@ public class TemplateCodeGenerator extends AbstractCodeGenerator {
             if (field.getType().equals(Date.class)) {
                 express = "new Date(" + express + ")";
             }
+            if(field.getType().equals(java.math.BigDecimal.class)){
+                express = "new java.math.BigDecimal(" + express + ")";
+            }
             return target + ClassHelper.PACKAGE_SEPARATOR + field.getName() + "=" + express + ClassCode.LINE_BREAK;
         }
         String setter = "set" + CodedConstant.capitalize(field.getName());
@@ -567,7 +570,9 @@ public class TemplateCodeGenerator extends AbstractCodeGenerator {
             if (field.getType().equals(Date.class)) {
                 express =  "new Date(" + express + ")";
             }
-            
+            if(field.getType().equals(java.math.BigDecimal.class)){
+                express = "new java.math.BigDecimal(" + express + ")";
+            }
             return target + ClassHelper.PACKAGE_SEPARATOR + setter + "(" + express + ")\n";
         } catch (Exception e) {
             if (LOGGER.isDebugEnabled()) {
@@ -605,7 +610,9 @@ public class TemplateCodeGenerator extends AbstractCodeGenerator {
             if (field.getType().equals(Date.class)) {
                 express = "new Date(" + express + ")";
             }
-
+            if(field.getType().equals(java.math.BigDecimal.class)){
+                express = "new java.math.BigDecimal(" + express + ")";
+            }
             code = "FieldUtils.setField(" + target + ", \"" + field.getName() + "\", " + express + ")"
                     + ClassCode.LINE_BREAK;
         }

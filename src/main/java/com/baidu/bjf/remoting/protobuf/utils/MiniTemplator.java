@@ -643,7 +643,6 @@ public class MiniTemplator {
      */
     public void generateOutput(Writer outputWriter) throws IOException {
         String s = generateOutput();
-        System.out.println(s);
         outputWriter.write(s);
     }
 

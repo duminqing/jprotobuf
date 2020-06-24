@@ -195,7 +195,7 @@ public class JdkCompiler extends AbstractCompiler {
                 className + ClassUtils.JAVA_EXTENSION, javaFileObject);
 
         DiagnosticCollector<JavaFileObject> diagnosticCollector = new DiagnosticCollector<JavaFileObject>();
-        Boolean result = compiler.getTask(null, javaFileManager, diagnosticCollector, options, null,
+        Boolean result = compiler.getTask(null, javaFileManager, diagnosticCollector, null, null,
                 Arrays.asList(new JavaFileObject[] { javaFileObject })).call();
         if (result == null || !result.booleanValue()) {
             throw new IllegalStateException(
